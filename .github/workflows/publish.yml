@@ -15,6 +15,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+          always-auth: true
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
