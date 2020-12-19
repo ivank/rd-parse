@@ -71,7 +71,9 @@ export function Ignore(toIgnore: RegExp | null, rule: Rule): FunctionRule {
   };
 }
 
-// Match a sequence of rules left to right
+/**
+ * Match a sequence of rules left to right
+ */
 export function All(...rules: Rule[]): FunctionRule {
   const functionRules = rules.map(Use);
 
@@ -86,7 +88,9 @@ export function All(...rules: Rule[]): FunctionRule {
   };
 }
 
-// Match any of the rules with left-to-right preference
+/**
+ * Match any of the rules with left-to-right preference
+ */
 export function Any(...rules: Rule[]): FunctionRule {
   const functionRules = rules.map(Use);
 
@@ -99,7 +103,9 @@ export function Any(...rules: Rule[]): FunctionRule {
   };
 }
 
-// Match a rule 1 or more times
+/**
+ * Match a rule 1 or more times
+ */
 export function Plus(rule: Rule): FunctionRule {
   const functionRule = Use(rule);
 
@@ -110,7 +116,9 @@ export function Plus(rule: Rule): FunctionRule {
   };
 }
 
-// Match a rule optionally
+/**
+ * Match a rule optionally
+ */
 export function Optional(rule: Rule): FunctionRule {
   const functionRule = Use(rule);
 
@@ -123,6 +131,11 @@ export function Optional(rule: Rule): FunctionRule {
   };
 }
 
+/**
+ * Use the Node helper to define how to build your AST. It has two arguments: the rule to match, and a reducer callback: see below.
+ * Each regex matching rule will dump all capturing groups matches from its regex to a stack in the matched order. If a rule is wrapped in a Node, the parser will call the provided reducer passing an Array, containing everything that the matched rule has put onto the stack.
+ * The reducer returns an object to be put back onto the stack for the parent nodes to pick up later.
+ */
 export function Node<T extends Token = Token>(
   rule: Rule,
   reducer: (values: Token[], $: Stack, $next: Stack) => T,
@@ -142,11 +155,16 @@ export function Node<T extends Token = Token>(
   };
 }
 
+/**
+ * matches the argument rule zero or more times: `Star = rule => Optional(Plus(rule)).`
+ */
 export function Star(rule: Rule): FunctionRule {
   return Optional(Plus(rule));
 }
 
-// Y combinator: often useful to define recursive grammars
+/**
+ * Y combinator: often useful to define recursive grammars
+ */
 export function Y(proc: (x: FunctionRule) => FunctionRule): FunctionRule {
   return ((x) => proc((y) => x(x)(y)))((x: any) => proc((y) => x(x)(y)));
 }
