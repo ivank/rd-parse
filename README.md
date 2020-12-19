@@ -1,7 +1,8 @@
 # rd-parse
 
 > A typescript fork of the awesome [rd-parse](https://github.com/dmaevsky/rd-parse) library by Dmitry Maevsky
-> A generic minimalist zero dependencies recursive-descent parser generator in Javascript.
+
+A generic minimalist zero dependencies recursive-descent parser generator in Javascript.
 
 You define your grammar directly in Javascript, in an EBNF fashion: see the examples.
 The parser produces an AST according to the specified grammar.
