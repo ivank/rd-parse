@@ -1,7 +1,6 @@
-.vscode
-
-# dependencies
-/node_modules
-
-# testing
-/test
+.*
+test/
+src/
+examples/
+node_modules/
+tsconfig.json
