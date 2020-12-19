@@ -1,5 +1,5 @@
 {
-  "name": "@ivank/rd-parse",
+  "name": "@ikerin/rd-parse",
   "version": "3.2.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

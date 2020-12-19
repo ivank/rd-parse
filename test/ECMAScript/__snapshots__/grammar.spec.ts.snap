@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ECMAScript test shuld parse boolean literals 1`] = `
+Object {
+  "left": Object {
+    "raw": "false",
+    "type": "Literal",
+    "value": false,
+  },
+  "operator": "||",
+  "right": Object {
+    "raw": "true",
+    "type": "Literal",
+    "value": true,
+  },
+  "type": "BinaryExpression",
+}
+`;
+
+exports[`ECMAScript test shuld parse exponentiation operator (right associativity) 1`] = `
+Object {
+  "left": Object {
+    "left": Object {
+      "name": "a",
+      "type": "Identifier",
+    },
+    "operator": "**",
+    "right": Object {
+      "left": Object {
+        "name": "b",
+        "type": "Identifier",
+      },
+      "operator": "**",
+      "right": Object {
+        "name": "c",
+        "type": "Identifier",
+      },
+      "type": "BinaryExpression",
+    },
+    "type": "BinaryExpression",
+  },
+  "operator": "/",
+  "right": Object {
+    "raw": "2",
+    "type": "Literal",
+    "value": 2,
+  },
+  "type": "BinaryExpression",
+}
+`;
+
+exports[`ECMAScript test shuld parse left associativity 1`] = `
+Object {
+  "left": Object {
+    "left": Object {
+      "name": "a",
+      "type": "Identifier",
+    },
+    "operator": "+",
+    "right": Object {
+      "name": "b",
+      "type": "Identifier",
+    },
+    "type": "BinaryExpression",
+  },
+  "operator": "-",
+  "right": Object {
+    "name": "c",
+    "type": "Identifier",
+  },
+  "type": "BinaryExpression",
+}
+`;
+
+exports[`ECMAScript test shuld parse operator precedence 1`] = `
+Object {
+  "left": Object {
+    "left": Object {
+      "name": "x",
+      "type": "Identifier",
+    },
+    "operator": "*",
+    "right": Object {
+      "name": "x",
+      "type": "Identifier",
+    },
+    "type": "BinaryExpression",
+  },
+  "operator": "+",
+  "right": Object {
+    "left": Object {
+      "name": "y",
+      "type": "Identifier",
+    },
+    "operator": "*",
+    "right": Object {
+      "name": "y",
+      "type": "Identifier",
+    },
+    "type": "BinaryExpression",
+  },
+  "type": "BinaryExpression",
+}
+`;
+
+exports[`ECMAScript test shuld parse template litarals 2 1`] = `
+Object {
+  "parts": Array [
+    Array [
+      "chunks",
+      "Mismatched timing labels (expected ",
+    ],
+    Array [
+      "expressions",
+      Object {
+        "object": Object {
+          "object": Object {
+            "name": "this",
+            "type": "Identifier",
+          },
+          "property": Object {
+            "name": "current_timing",
+            "type": "Identifier",
+          },
+          "type": "MemberExpression",
+        },
+        "property": Object {
+          "name": "label",
+          "type": "Identifier",
+        },
+        "type": "MemberExpression",
+      },
+    ],
+    Array [
+      "chunks",
+      ", got ",
+    ],
+    Array [
+      "expressions",
+      Object {
+        "name": "label",
+        "type": "Identifier",
+      },
+    ],
+    Array [
+      "chunks",
+      ")",
+    ],
+  ],
+  "type": "TemplateLiteral",
+}
+`;
