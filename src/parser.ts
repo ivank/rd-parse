@@ -136,9 +136,9 @@ export function Optional(rule: Rule): FunctionRule {
  * Each regex matching rule will dump all capturing groups matches from its regex to a stack in the matched order. If a rule is wrapped in a Node, the parser will call the provided reducer passing an Array, containing everything that the matched rule has put onto the stack.
  * The reducer returns an object to be put back onto the stack for the parent nodes to pick up later.
  */
-export function Node<T extends Token = Token>(
+export function Node<T extends Token = Token, Capture extends Token[] = Token[]>(
   rule: Rule,
-  reducer: (values: Token[], $: Stack, $next: Stack) => T,
+  reducer: (values: Capture, $: Stack, $next: Stack) => T,
 ): FunctionRule {
   const functionRule = Use(rule);
 
@@ -147,7 +147,7 @@ export function Node<T extends Token = Token>(
     if ($next === $) return $;
 
     // We have a match
-    const node = reducer($.stack.slice($.sp, $next.sp), $, $next);
+    const node = reducer($.stack.slice($.sp, $next.sp) as Capture, $, $next);
     $next.sp = $.sp;
     if (node !== null) $.stack[$next.sp++] = node;
 
